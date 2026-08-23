@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 42 96% 50%;
+    --primary-foreground: 26 83% 14%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 71% 45%;
+    --success-foreground: 144 61% 20%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 42 96% 50%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 5.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 42 96% 56%;
+    --primary-foreground: 26 83% 14%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 71% 45%;
+    --success-foreground: 144 70% 90%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 42 96% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* --- 3D coin ----------------------------------------------------------- */
+.coin-scene {
+  perspective: 600px;
+}
+.coin {
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.3, 0, 0.2, 1);
+}
+.coin-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+.coin-tails {
+  transform: rotateY(180deg);
+}
+
+/* Continuous spin while the flip is in progress */
+@keyframes coin-spin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+.coin-spinning {
+  animation: coin-spin 0.5s linear infinite;
+}
+
+/* Dramatic landing when the result is revealed */
+@keyframes coin-land-heads {
+  0% {
+    transform: rotateY(0deg) scale(1);
+  }
+  80% {
+    transform: rotateY(1800deg) scale(1.15);
+  }
+  100% {
+    transform: rotateY(1800deg) scale(1);
+  }
+}
+@keyframes coin-land-tails {
+  0% {
+    transform: rotateY(0deg) scale(1);
+  }
+  80% {
+    transform: rotateY(1980deg) scale(1.15);
+  }
+  100% {
+    transform: rotateY(1980deg) scale(1);
+  }
+}
+.coin-land-heads {
+  animation: coin-land-heads 1.6s cubic-bezier(0.3, 0, 0.2, 1) forwards;
+}
+.coin-land-tails {
+  animation: coin-land-tails 1.6s cubic-bezier(0.3, 0, 0.2, 1) forwards;
+}
