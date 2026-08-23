@@ -47,8 +47,8 @@ function EventRow({ event }: { event: GameEvent }) {
   const Icon = meta.icon;
 
   return (
-    <li className="flex items-start gap-3 rounded-lg border p-3">
-      <div className="mt-0.5 rounded-full bg-muted p-2">
+    <li className="glass flex items-start gap-3 rounded-2xl p-3.5">
+      <div className="glass-subtle mt-0.5 rounded-full p-2">
         <Icon className="h-4 w-4" />
       </div>
       <div className="min-w-0 flex-1">

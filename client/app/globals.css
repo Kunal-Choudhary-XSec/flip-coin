@@ -4,52 +4,52 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --background: 220 30% 96%;
+    --foreground: 230 25% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 230 25% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover-foreground: 230 25% 10%;
     --primary: 42 96% 50%;
     --primary-foreground: 26 83% 14%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --secondary: 220 20% 92%;
+    --secondary-foreground: 230 25% 12%;
+    --muted: 220 20% 92%;
+    --muted-foreground: 230 10% 42%;
+    --accent: 220 20% 90%;
+    --accent-foreground: 230 25% 12%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --success: 142 71% 45%;
     --success-foreground: 144 61% 20%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
+    --border: 230 15% 86%;
+    --input: 230 15% 86%;
     --ring: 42 96% 50%;
-    --radius: 0.5rem;
+    --radius: 1rem;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 5.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 42 96% 56%;
-    --primary-foreground: 26 83% 14%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 50.6%;
+    --background: 235 30% 5%;
+    --foreground: 220 30% 96%;
+    --card: 235 25% 8%;
+    --card-foreground: 220 30% 96%;
+    --popover: 235 28% 7%;
+    --popover-foreground: 220 30% 96%;
+    --primary: 42 96% 58%;
+    --primary-foreground: 26 83% 12%;
+    --secondary: 235 20% 14%;
+    --secondary-foreground: 220 30% 96%;
+    --muted: 235 20% 14%;
+    --muted-foreground: 225 12% 66%;
+    --accent: 235 20% 16%;
+    --accent-foreground: 220 30% 96%;
+    --destructive: 0 62.8% 52%;
     --destructive-foreground: 0 0% 98%;
     --success: 142 71% 45%;
     --success-foreground: 144 70% 90%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 42 96% 56%;
+    --border: 235 18% 16%;
+    --input: 235 18% 18%;
+    --ring: 42 96% 58%;
   }
 }
 
@@ -59,7 +59,56 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    background-image:
+      radial-gradient(1200px 600px at 50% -200px, hsl(var(--primary) / 0.07), transparent 60%),
+      radial-gradient(800px 400px at 90% 20%, hsl(265 80% 60% / 0.05), transparent 60%),
+      radial-gradient(700px 400px at 5% 70%, hsl(190 90% 50% / 0.05), transparent 60%);
+    background-attachment: fixed;
   }
+}
+
+/* --- Liquid glass utilities ------------------------------------------- */
+@layer components {
+  .glass {
+    @apply border border-black/[0.06] bg-white/60 backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.05];
+    box-shadow:
+      inset 0 1px 0 0 rgb(255 255 255 / 0.08),
+      0 8px 32px 0 rgb(0 0 0 / 0.12);
+  }
+  .glass-strong {
+    @apply border border-black/[0.06] bg-white/75 backdrop-blur-2xl dark:border-white/[0.12] dark:bg-white/[0.08];
+    box-shadow:
+      inset 0 1px 0 0 rgb(255 255 255 / 0.1),
+      0 16px 48px 0 rgb(0 0 0 / 0.24);
+  }
+  .glass-subtle {
+    @apply border border-black/[0.04] bg-white/40 backdrop-blur-md dark:border-white/[0.06] dark:bg-white/[0.03];
+  }
+  .text-gradient {
+    @apply bg-gradient-to-r from-amber-300 via-amber-400 to-orange-400 bg-clip-text text-transparent;
+  }
+  .glow-primary {
+    box-shadow: 0 0 40px 0 hsl(var(--primary) / 0.25);
+  }
+}
+
+/* Frosted scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.25);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.4);
+  background-clip: content-box;
 }
 
 /* --- 3D coin ----------------------------------------------------------- */

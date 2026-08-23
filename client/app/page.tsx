@@ -42,11 +42,18 @@ export default function HomePage() {
   return (
     <div className="space-y-16">
       {/* Hero */}
-      <section className="flex flex-col items-center gap-6 pt-8 text-center">
-        <Coin side={CoinSide.Heads} flipping size="lg" />
-        <div className="space-y-3">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            P2P Coin Flips on <span className="text-primary">Stellar</span>
+      <section className="relative flex flex-col items-center gap-7 pt-10 text-center">
+        <div className="relative animate-float">
+          <div className="absolute inset-0 -z-10 scale-150 rounded-full bg-primary/25 blur-3xl" />
+          <Coin side={CoinSide.Heads} flipping size="lg" />
+        </div>
+        <div className="space-y-4">
+          <div className="glass-subtle mx-auto inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-muted-foreground">
+            <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
+            Live on Stellar Testnet · Soroban powered
+          </div>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
+            P2P Coin Flips on <span className="text-gradient">Stellar</span>
           </h1>
           <p className="mx-auto max-w-xl text-muted-foreground">
             Challenge anyone to a provably on-chain coin flip. Entry fees are
@@ -54,7 +61,7 @@ export default function HomePage() {
           </p>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <Button size="lg" asChild>
+          <Button size="lg" className="glow-primary" asChild>
             <Link href="/play">
               Start playing
               <ArrowRight className="h-4 w-4" />
@@ -70,6 +77,20 @@ export default function HomePage() {
           <ShieldCheck className="h-4 w-4" />
           Funds held by the contract, not by us · Stellar Testnet
         </div>
+
+        {/* Quick stats */}
+        <div className="mt-2 grid w-full max-w-2xl grid-cols-3 gap-3">
+          {[
+            ["10s", "entry lock window"],
+            ["5s", "to the coin flip"],
+            ["2×", "winner takes the pot"],
+          ].map(([value, label]) => (
+            <div key={label} className="glass rounded-2xl px-4 py-4">
+              <p className="text-2xl font-bold text-gradient">{value}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{label}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* How it works */}
@@ -77,13 +98,16 @@ export default function HomePage() {
         <h2 className="text-center text-2xl font-semibold">How it works</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((step, i) => (
-            <Card key={step.title}>
+            <Card
+              key={step.title}
+              className="transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_0_hsl(var(--primary)/0.18)]"
+            >
               <CardHeader className="pb-2">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-primary/10 p-2 text-primary">
+                  <div className="glass-subtle rounded-xl p-2.5 text-primary">
                     <step.icon className="h-5 w-5" />
                   </div>
-                  <span className="text-xs font-mono text-muted-foreground">
+                  <span className="font-mono text-xs text-muted-foreground">
                     0{i + 1}
                   </span>
                 </div>

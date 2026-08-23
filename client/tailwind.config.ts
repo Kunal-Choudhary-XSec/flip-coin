@@ -69,10 +69,21 @@ const config: Config = {
           "70%": { boxShadow: "0 0 0 12px hsl(var(--primary) / 0)" },
           "100%": { boxShadow: "0 0 0 0 hsl(var(--primary) / 0)" },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        aurora: {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "33%": { transform: "translate(30px, -30px) scale(1.1)" },
+          "66%": { transform: "translate(-20px, 20px) scale(0.95)" },
+        },
       },
       animation: {
         "coin-flip": "coin-flip 2.5s cubic-bezier(0.3, 0, 0.2, 1) forwards",
         "pulse-ring": "pulse-ring 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        float: "float 5s ease-in-out infinite",
+        aurora: "aurora 14s ease-in-out infinite",
       },
     },
   },

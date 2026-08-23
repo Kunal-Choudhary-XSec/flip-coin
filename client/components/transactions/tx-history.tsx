@@ -67,7 +67,7 @@ export function TxHistory() {
         {transactions.map((tx) => (
           <li
             key={tx.hash}
-            className="flex flex-wrap items-center gap-3 rounded-lg border p-3"
+            className="glass flex flex-wrap items-center gap-3 rounded-2xl p-3.5"
           >
             <TxStatusBadge status={tx.status} />
             <div className="min-w-0 flex-1">
