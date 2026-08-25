@@ -13,6 +13,8 @@ the contract instantly pays the **entire pot to the winner**.
 >
 > **Deploy transaction:** [`0bae057d60ab0721037271fcc567aabc067366407313f5bace5e77acb19d62cf`](https://stellar.expert/explorer/testnet/tx/0bae057d60ab0721037271fcc567aabc067366407313f5bace5e77acb19d62cf)
 
+> **Demo Video on Youtube:** [`https://www.youtube.com/watch?v=QHGW5WzR_-Y`](https://www.youtube.com/watch?v=QHGW5WzR_-Y)
+
 ---
 
 ## 🎮 How a game plays out
